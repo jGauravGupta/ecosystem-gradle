@@ -21,4 +21,4 @@ install:
     
 script:
   - ./gradlew clean build -x check --project-dir payara-micro-gradle-plugin
-  - ./gradlew test --project-dir payara-micro-gradle-plugin
+  - ./gradlew test -PmaxParallelForks=1 --project-dir payara-micro-gradle-plugin

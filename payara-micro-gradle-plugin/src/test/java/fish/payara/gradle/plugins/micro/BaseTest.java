@@ -38,6 +38,8 @@
  */
 package fish.payara.gradle.plugins.micro;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.gradle.api.Project;
 import org.gradle.api.Task;
 import org.gradle.api.internal.artifacts.dsl.DefaultRepositoryHandler;
@@ -118,6 +120,9 @@ public abstract class BaseTest {
         assertNotNull(stopTask.findProcessId());
 
         stopTask.execute();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {}
         assertNull(stopTask.findProcessId());
     }
 

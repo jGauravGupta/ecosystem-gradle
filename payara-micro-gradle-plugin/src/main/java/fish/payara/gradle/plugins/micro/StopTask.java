@@ -120,7 +120,7 @@ public class StopTask extends AbstractTask {
         try {
             final Runtime re = Runtime.getRuntime();
             if (isUnix()) {
-                command = "kill " + processId;
+                command = "kill " + processId + ";wait " + processId;
             } else if (isWindows()) {
                 command = "taskkill /PID " + processId + " /F";
             }

@@ -38,6 +38,9 @@
  */
 package fish.payara.gradle.plugins.micro;
 
+import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import org.awaitility.Awaitility;
 import org.gradle.api.Project;
 import org.gradle.api.Task;
 import org.gradle.api.internal.artifacts.dsl.DefaultRepositoryHandler;
@@ -118,6 +121,9 @@ public abstract class BaseTest {
         assertNotNull(stopTask.findProcessId());
 
         stopTask.execute();
+        Awaitility.await()
+                .atMost(5000, MILLISECONDS)
+                .until(() -> stopTask.findProcessId() != null);
         assertNull(stopTask.findProcessId());
     }
 

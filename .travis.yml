@@ -15,6 +15,9 @@ cache:
     
 before_install:
   - chmod +x gradlew
+  
+install:
+  - true
     
 script:
   - ./gradlew clean build --project-dir payara-micro-gradle-plugin

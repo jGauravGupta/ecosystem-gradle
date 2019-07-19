@@ -122,9 +122,7 @@ public abstract class BaseTest {
 
         stopTask.execute();
         Awaitility.await()
-                .atMost(5000, MILLISECONDS)
-                .until(() -> stopTask.findProcessId() != null);
-        assertNull(stopTask.findProcessId());
+                .until(() -> stopTask.findProcessId() == null);
     }
 
 }

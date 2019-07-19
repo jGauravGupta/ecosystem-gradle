@@ -13,5 +13,8 @@ cache:
     - $HOME/.m2
     - .gradle
     
+before_install:
+  - chmod +x gradlew
+    
 script:
   - ./gradlew clean build --project-dir payara-micro-gradle-plugin
